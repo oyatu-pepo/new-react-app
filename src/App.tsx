@@ -1,13 +1,14 @@
 import React from 'react';
+
 // import logo from './logo.svg';
 import './App.css';
 
-import Goods from './containers/Goods'
+import GoodsList from './containers/GoodsList'
 
 function App() {
   return (
     <div className="App">
-      <Goods />
+      <GoodsList />
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
