@@ -1,30 +1,39 @@
 import React from 'react';
+import { ConnectedRouter } from 'connected-react-router';
+import { Switch, Route } from 'react-router';
+import { History } from 'history';
 
-// import logo from './logo.svg';
 import './App.css';
 
 import GoodsList from './containers/GoodsList'
+import Complete from './containers/Complete';
+import Cart from './containers/Cart';
+import Header from './presentations/Header';
 
-function App() {
-  return (
-    <div className="App">
-      <GoodsList />
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-    </div>
-  );
+/** ルーティング用コンポーネント */
+const AppRouter = () => (
+  <Switch>
+    <Route exact path="/" component={GoodsList} />
+    <Route exact path="/list" component={GoodsList} />
+    <Route exact path="/cart" component={Cart} />
+    <Route exact path="/done" component={Complete} />
+    {/* どのパスにも引っかからない場合 */}
+    <Route exact path="/" component={GoodsList} />
+  </Switch>
+);
+
+interface AppProps {
+  history: History<History.PoorMansUnknown>;
 }
+
+/** アプリケーション全体のコンポーネント */
+const App = ({ history }: AppProps) => (
+  <ConnectedRouter history={history}>
+    <div className="App">
+      <Header />
+      <AppRouter />
+    </div>
+  </ConnectedRouter>
+);
 
 export default App;

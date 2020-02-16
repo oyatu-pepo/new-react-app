@@ -1,9 +1,14 @@
 import { createStore, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
-import rootState from './modules';
+import { createBrowserHistory } from 'history'
+
+import createRootReducer from './modules';
+
+// historyオブジェクト生成
+export const history = createBrowserHistory();
 
 const store = createStore(
-  rootState,
+  createRootReducer(history),
   applyMiddleware(logger)
 );
 

@@ -12,7 +12,7 @@ export const setUser = (name: string): Action => ({
 });
 
 /** 会員グレードを設定 */
-export const removeGoods = (grade: Grade): Action => ({
+export const setGrade = (grade: Grade): Action => ({
   type: SET_GRADE,
   payload: grade,
 });
